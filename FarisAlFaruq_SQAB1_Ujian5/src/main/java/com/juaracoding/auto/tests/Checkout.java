@@ -28,85 +28,51 @@ private WebDriver driver;
 	 * Payment
 	 */
 		
-	@FindBy(css = "#app > div > div > div.home-body > div > div:nth-child(1) > div > div.avatar.mx-auto.white > svg")
-	private WebElement btnElements;
+	@FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a")
+	private WebElement btnCheckOut;
 	
-	@FindBy(id = "item-0")
-	private WebElement listTextBox;
+	@FindBy(xpath = "//*[@id=\"center_column\"]/p[2]/a[1]")
+	private WebElement btnSummary;
 	
-	@FindBy(id = "item-1")
-	private WebElement listCheckBox;
+	@FindBy(xpath = "//*[@id=\"center_column\"]/form/p/button")
+	private WebElement btnAddress;
 	
-	@FindBy(id = "item-2")
-	private WebElement listRadioButton;
+	@FindBy(id = "cgv")
+	private WebElement slctCgv;
 	
-	@FindBy(id = "userName")
-	private WebElement txtName;
+	@FindBy(xpath = "//*[@id=\"form\"]/p/button")
+	private WebElement btnShipping;
 	
-	@FindBy(id = "userEmail")
-	private WebElement txtEmail;
+	@FindBy(xpath = "//*[@id=\"HOOK_PAYMENT\"]/div[1]/div/p/a")
+	private WebElement btnWirePayment;
 	
-	@FindBy(id = "currentAddress")
-	private WebElement txtcurrentAddress;
+	@FindBy(xpath = "//*[@id=\"cart_navigation\"]/button")
+	private WebElement btnConfirm;
 	
-	@FindBy(id = "permanentAddress")
-	private WebElement txtpermanentAddress;
-
-	@FindBy(id = "submit")
-	private WebElement btnSubmit;
-	
-	@FindBy(css = "#tree-node > div > button.rct-option.rct-option-expand-all")
-	private WebElement btnExpandAll;
-	
-	@FindBy(css = "#tree-node > ol > li > ol > li:nth-child(1) > ol > li:nth-child(1) > span > label > span.rct-checkbox")
-	private WebElement checkListNotes;
-	
-	@FindBy(css = "#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(1) > ol > li:nth-child(1) > span > label > span.rct-checkbox")
-	private WebElement checkListReact;
-	
-	@FindBy(css = "#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > ol > li:nth-child(4) > span > label > span.rct-checkbox")
-	private WebElement checkListGeneral;
-	
-	@FindBy(css = "#tree-node > ol > li > ol > li:nth-child(3) > ol > li:nth-child(2) > span > label > span.rct-checkbox")
-	private WebElement checkListExcel;
-	
-	@FindBy(id = "impressiveRadion")
-	private WebElement btnRadioImpressive;
-	
-	public void boxElements() {
+	public void checkOutThing() {
 		WebDriverWait wait = new WebDriverWait(driver,10);
-		wait.until(ExpectedConditions.elementToBeClickable(btnElements));
-		btnElements.click();
+		wait.until(ExpectedConditions.elementToBeClickable(btnCheckOut));
+		btnCheckOut.click();
+		btnSummary.click();
 	}
 	
-	public void menuTextBox() {
-		listTextBox.click();
+	public void checkAddress() {
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.elementToBeClickable(btnCheckOut));
+		btnAddress.click();
 	}
 	
-	public void textBox(String userName, String userEmail, String currentAddress, String permanentAddress) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		txtName.sendKeys(userName);
-		txtEmail.sendKeys(userEmail);
-		txtcurrentAddress.sendKeys(currentAddress);
-		txtpermanentAddress.sendKeys(permanentAddress);
-		js.executeScript("arguments[0].scrollIntoView();", txtpermanentAddress);
-		btnSubmit.click();
+	public void checkShipping() {
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.elementToBeClickable(btnCheckOut));
+		slctCgv.click();
+		btnShipping.click();
 	}
 	
-	public void menuRadioButton() {
-		listRadioButton.click();
-		btnRadioImpressive.click();
-	}
-	
-	public void menuCheckBox() {
-		JavascriptExecutor js2 = (JavascriptExecutor) driver;
-		listCheckBox.click();
-		btnExpandAll.click();
-		checkListNotes.click();
-		js2.executeScript("arguments[0].scrollIntoView();", checkListNotes);
-		checkListReact.click();
-		checkListGeneral.click();
-		checkListExcel.click();
+	public void checkPayment() {
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.elementToBeClickable(btnCheckOut));
+		btnWirePayment.click();
 	}
 
 }
